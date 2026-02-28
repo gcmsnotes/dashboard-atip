@@ -58,19 +58,17 @@
     </noscript>
     
     <iframe 
-        src="https://atip-aiprp.ca/client-order-tracker/" 
         class="iframe-container"
         title="Dashboard"
         allowfullscreen>
     </iframe>
-
     <script>
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-        const iframe = document.querySelector('iframe');
-        if (iframe) {
-            iframe.src = iframe.src + (iframe.src.includes('?') ? '&' : '?') + 'pwa=1';
-        }
-    }
+    const iframe = document.querySelector('iframe');
+    const baseUrl = 'https://atip-aiprp.ca/client-order-tracker/';
+    const isPWA   = window.matchMedia('(display-mode: standalone)').matches;
+
+    iframe.src = isPWA ? baseUrl + '?pwa=1' : baseUrl;
     </script>
+    
 </body>
 </html>
